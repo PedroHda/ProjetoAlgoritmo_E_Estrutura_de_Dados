@@ -77,11 +77,13 @@ public class principal {
         gauge.setValue(novaTemperatura);
         gauge.setString(novaTemperatura + "°C");
         temperaturaLabel.setText("Temperatura Atual: " + temperaturaAtual);
+        System.out.println("Temperatura Atual: " + temperaturaAtual);
 
         System.out.println("Histórico de Temperaturas: " + historicoTemperatura);
     }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(principal::new);
+        System.err.println("Simulação de Temperatura iniciada...");
     }
 }

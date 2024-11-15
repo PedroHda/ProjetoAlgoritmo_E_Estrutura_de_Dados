@@ -16,6 +16,6 @@ public class Dados {
     }
 
     public String toString() {
-        return ("" + this.temperatura + "°C");
+        return ("Temperatura = " + this.temperatura + "°C");
     }
 }
