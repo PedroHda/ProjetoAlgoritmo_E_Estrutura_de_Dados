@@ -1,7 +1,4 @@
-
 import java.awt.*;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Random;
 import javax.swing.*;
 
@@ -14,13 +11,14 @@ public class principal {
     private JFrame frame;
     private GaugePanel gaugePanel;
     private JLabel temperaturaLabel, tituloLabel;
-    private Queue<Dados> historicoTemperatura;
+    private JButton mostrarHistoricoButton;
+    private Vetor historicoTemperatura;
     private Random random;
     private Timer timer;
     private int diaAtual;
 
     public principal() {
-        historicoTemperatura = new LinkedList<>();
+        historicoTemperatura = new Vetor();
         random = new Random();
         diaAtual = 1;
         iniciarInterfaceGrafica();
@@ -47,6 +45,10 @@ public class principal {
         temperaturaLabel = new JLabel("Temperatura Atual: " + TEMP_MIN + "°C", SwingConstants.CENTER);
         temperaturaLabel.setFont(new Font("Arial", Font.PLAIN, 12));
 
+        // Botão para mostrar histórico
+        mostrarHistoricoButton = new JButton("Mostrar Histórico");
+        mostrarHistoricoButton.addActionListener(e -> mostrarHistorico());
+
         // Painel principal
         JPanel painelPrincipal = new JPanel();
         painelPrincipal.setLayout(new BorderLayout(5, 5));
@@ -56,6 +58,7 @@ public class principal {
         painelPrincipal.add(temperaturaLabel, BorderLayout.SOUTH);
 
         frame.add(painelPrincipal, BorderLayout.CENTER);
+        frame.add(mostrarHistoricoButton, BorderLayout.SOUTH);
         frame.setVisible(true);
     }
 
@@ -73,11 +76,7 @@ public class principal {
         int novaTemperatura = TEMP_MIN + random.nextInt(TEMP_MAX - TEMP_MIN + 1);
 
         Dados temperaturaAtual = new Dados(novaTemperatura);
-        historicoTemperatura.offer(temperaturaAtual);
-
-        if (historicoTemperatura.size() > 11) {  // Manter apenas os últimos 11 valores
-            historicoTemperatura.poll();
-        }
+        historicoTemperatura.adiciona(temperaturaAtual);
 
         // Atualizar o painel de gauge e a label com a nova temperatura
         gaugePanel.setValue(novaTemperatura);
@@ -85,6 +84,20 @@ public class principal {
 
         System.out.println("Dia " + diaAtual + " - Temperatura: " + novaTemperatura + "°C");
         diaAtual += 3; // Avançar 3 dias
+    }
+
+    private void mostrarHistorico() {
+        if (historicoTemperatura.vazia()) {
+            JOptionPane.showMessageDialog(frame, "Nenhuma temperatura registrada.", "Histórico", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        StringBuilder historico = new StringBuilder();
+        for (int i = 0; i < historicoTemperatura.Tamanho(); i++) {
+            historico.append(historicoTemperatura.pegarDados(i).toString()).append("\n");
+        }
+
+        JOptionPane.showMessageDialog(frame, historico.toString(), "Histórico de Temperaturas", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public static void main(String[] args) {
