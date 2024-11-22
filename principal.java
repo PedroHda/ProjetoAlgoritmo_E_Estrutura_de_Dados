@@ -73,7 +73,7 @@ public class principal {
             return;
         }
 
-        int novaTemperatura = TEMP_MIN + random.nextInt(TEMP_MAX - TEMP_MIN + 1);
+        int novaTemperatura = TEMP_MIN + random.nextInt(TEMP_MAX - TEMP_MIN + 1); // random.nextInt gera um número entre 0 e TEMP_MAX - TEMP_MIN e somamos com TEMP_MIN
 
         Dados temperaturaAtual = new Dados();
         temperaturaAtual.setDia(diaAtual);
