@@ -75,7 +75,10 @@ public class principal {
 
         int novaTemperatura = TEMP_MIN + random.nextInt(TEMP_MAX - TEMP_MIN + 1);
 
-        Dados temperaturaAtual = new Dados(novaTemperatura);
+        Dados temperaturaAtual = new Dados();
+        temperaturaAtual.setDia(diaAtual);
+        temperaturaAtual.setTemperatura(novaTemperatura);
+
         historicoTemperatura.adiciona(temperaturaAtual);
 
         // Atualizar o painel de gauge e a label com a nova temperatura

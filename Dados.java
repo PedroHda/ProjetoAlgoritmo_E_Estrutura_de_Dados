@@ -2,11 +2,15 @@
 public class Dados {
 
     private int temperatura;
+    private int dia;
 
-    public Dados(int temperaturaInicial) {
-        this.temperatura = temperaturaInicial;
+    public int getDia() {
+        return dia;
     }
 
+    public void setDia(int dia) {
+        this.dia = dia;
+    }
     public int getTemperatura() {
         return temperatura;
     }
@@ -16,6 +20,6 @@ public class Dados {
     }
 
     public String toString() {
-        return ("Temperatura = " + this.temperatura + "°C");
+        return ("Dia " + this.dia + " - " + "Temperatura = " + this.temperatura + "°C");
     }
 }
