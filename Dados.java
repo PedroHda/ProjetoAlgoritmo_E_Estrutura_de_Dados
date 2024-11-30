@@ -1,25 +1,24 @@
 
 public class Dados {
 
-    private int temperatura;
-    private int dia;
+    private int numeroAparelhos_x;
+    private int consumoEnergia_y;
 
-    public int getDia() {
-        return dia;
+    public int getConsumoEnergia_y() {
+        return consumoEnergia_y;
+    }
+    public void setConsumoEnergia_y(int consumoEnergia_y) {
+        this.consumoEnergia_y = consumoEnergia_y;
+    }
+    public int getNumeroAparelhos_x() {
+        return numeroAparelhos_x;
+    }
+    public void setNumeroAparelhos_x(int numeroAparelhos_x) {
+        this.numeroAparelhos_x = numeroAparelhos_x;
     }
 
-    public void setDia(int dia) {
-        this.dia = dia;
-    }
-    public int getTemperatura() {
-        return temperatura;
-    }
-
-    public void setTemperatura(int temperatura) {
-        this.temperatura = temperatura;
-    }
 
     public String toString() {
-        return ("Dia " + this.dia + " - " + "Temperatura = " + this.temperatura + "°C");
+        return ("Consumo X " + this.numeroAparelhos_x + " | " + "Consumo Y = " + this.consumoEnergia_y + " ");
     }
 }
